@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module type="J2EE_WEB_MODULE" version="4">
+  <component name="WebModuleBuildComponent">
+    <setting name="EXPLODED_URL" value="file://$MODULE_DIR$/target/P4-6"/>
+  </component>
+  <component name="WebModuleProperties">
+    <containerElement type="library" level="module">
+      <attribute name="method" value="0"/>
+      <attribute name="URI" value="/WEB-INF/lib/junit-4.11.jar"/>
+      <url>jar://E:/Learn/Java/IntelliJ IDEA 2020.1/plugins/maven/lib/maven3/Repository/junit/junit/4.11/junit-4.11.jar!/</url>
+    </containerElement>
+    <containerElement type="library" level="module">
+      <attribute name="method" value="0"/>
+      <attribute name="URI" value="/WEB-INF/lib/hamcrest-core-1.3.jar"/>
+      <url>jar://E:/Learn/Java/IntelliJ IDEA 2020.1/plugins/maven/lib/maven3/Repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar!/</url>
+    </containerElement>
+    <containerElement type="library" level="module">
+      <attribute name="method" value="1"/>
+      <attribute name="URI" value="/WEB-INF/lib/javax.servlet-api-4.0.1.jar"/>
+      <url>jar://E:/Learn/Java/IntelliJ IDEA 2020.1/plugins/maven/lib/maven3/Repository/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.jar!/</url>
+    </containerElement>
+    <deploymentDescriptor version="2.3" name="web.xml" optional="false" url="file://$MODULE_DIR$/src/main/webapp/WEB-INF/web.xml"/>
+    <webroots>
+      <root relative="/" url="file://$MODULE_DIR$/src/main/webapp"/>
+    </webroots>
+  </component>
+  <component name="NewModuleRootManager">
+    <output url="file://$MODULE_DIR$/target/classes"/>
+    <output-test url="file://$MODULE_DIR$/target/test-classes"/>
+    <content>
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false"/>
+      <excludeFolder url="file://$MODULE_DIR$/target"/>
+    </content>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/Learn/Java/IntelliJ IDEA 2020.1/plugins/maven/lib/maven3/Repository/junit/junit/4.11/junit-4.11.jar!/"/>
+        </CLASSES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/Learn/Java/IntelliJ IDEA 2020.1/plugins/maven/lib/maven3/Repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar!/"/>
+        </CLASSES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://E:/Learn/Java/IntelliJ IDEA 2020.1/plugins/maven/lib/maven3/Repository/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.jar!/"/>
+        </CLASSES>
+      </library>
+    </orderEntry>
+  </component>
+</module>

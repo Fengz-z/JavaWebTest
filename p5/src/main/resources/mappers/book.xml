@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="books">
+    <!-- 根据id获取用户信息 -->
+    <select id="findByIsbn" parameterType="String" resultType="com.demo.entity.Book">
+        select * from books where isbn = #{isbn}
+    </select>
+
+    <select id="findAll" resultType="com.demo.entity.Book">
+        select * from books
+    </select>
+    <!-- 向数据库插入一条数据 -->
+    <insert id="addBook" parameterType="com.demo.entity.Book">
+        insert into books(isbn,title,price)
+            values(#{isbn},#{title},#{price})
+    </insert>
+
+    <update id="updateBook" parameterType="com.demo.entity.Book">
+        UPDATE `webstore`.`books`
+        SET `isbn` = #{isbn},
+        `title` = #{title},
+        `price` = #{price}
+        WHERE `isbn` =  #{isbn}
+    </update>
+
+    <delete id="deleteBook" parameterType="String">
+        delete from books where isbn = #{isbn}
+    </delete>
+
+</mapper>

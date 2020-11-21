@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+        http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+        version="2.1">
+
+    <tlib-version>1.0</tlib-version>
+    <short-name>myshortname</short-name>
+    <uri>http://www.domain.com/simple</uri>
+
+    <!-- Invoke 'Generate' action to add tags or functions -->
+    <tag>
+        <name>hello</name>
+        <tag-class>com.sirifeng.mytag.HelloTag</tag-class>
+        <body-content>empty</body-content>
+    </tag>
+
+    <tag>
+        <name>sqrt</name>
+        <tag-class>com.sirifeng.mytag.MathTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>x</name>
+            <required>true</required>
+        </attribute>
+    </tag>
+
+</taglib>
