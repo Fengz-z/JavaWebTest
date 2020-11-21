@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd
+            http://www.springframework.org/schema/mvc
+            http://www.springframework.org/schema/mvc/spring-mvc.xsd
+            http://www.springframework.org/schema/tx
+            http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- 启用Spring注解形式扫描对象 -->
+    <context:component-scan base-package="com.sirifeng"/>
+    <!-- 启用Spring MVC的注解模式 -->
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <!--StringHttpMessageConverter 用于设置文本类型http响应的设置-->
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <!--配置支持的媒体类型（MIME)-->
+                <property name="supportedMediaTypes">
+                    <list>
+                        <!-- 响应输出的文本被浏览器作为html进行解释，使用字符集为UTF-8 -->
+                        <value>text/html;charset=utf-8</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <!-- 将静态资源排除在外，用于提高执行效率 -->
+    <mvc:default-servlet-handler/>
+
+
+
+    <!--mybatis整合配置
+        Mybatis与Spring整合是指SessionFactory对象不再由我们程序自己创建
+        而改为使用配置方式由Spring IOC容器创建与管理
+        这样做的好处是，配置方便，并在此基础上为Mybatis扩展的很多额外的功能。
+    -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <!-- 定义数据库 -->
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/webstore?useUnicode=true&amp;characterEncoding=UTF-8"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+        <!--初始化连接池的时候默认创建5个连接-->
+        <property name="initialSize" value="5"/>
+        <!--最大连接数量-->
+        <property name="maxActive" value="20"/>
+        <!-- 设置空闲连接数最少为5个 -->
+        <property name="minIdle" value="5"/>
+        <!-- 数据库连接最大等待时间60秒 -->
+        <property name="maxWait" value="60000"/>
+        <!--是否在分配连接时测试连接有效性-->
+        <property name="testOnBorrow" value="false"/>
+        <!--是否在连接空闲状态时测试连接有效性-->
+        <property name="testWhileIdle" value="true"/>
+        <!--是否在归还连接时测试有效性-->
+        <property name="testOnReturn" value="false"/>
+        <!--测试有效性的SQL语句-->
+        <property name="validationQuery" value="SELECT 1"/>
+
+        <!--filters用于开启监控过滤器
+        stat 是SQL及Web监控
+        wall 是预防SQL注入攻击
+        slf4j 是日志输出-->
+        <property name="filters" value="stat,wall,slf4j"/>
+        <!--mergeSQL对相同SQL进行合并
+        slowSqlMillis定义超过500毫秒执行时间的SQL为慢查询-->
+        <property name="connectionProperties" value="druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500"/>
+    </bean>
+    <!--定义sqlSessionFactory连接工厂-->
+    <!-- MybatisSqlSessionFactoryBean对Mybatis-Spring整合插件进行了重写与扩展.提供自动生成SQL的功能 -->
+    <bean id="sqlSessionFactory" class="com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean">
+        <!--关联数据源-->
+        <property name="dataSource" ref="dataSource"/>
+        <!--配置文件地址-->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <!--mapper XML文件保存目录-->
+        <property name="mapperLocations" value="classpath:mappers/*.xml"/>
+        <!-- mapper resource="goods.xml" -->
+    </bean>
+    <!--Spring为Mybatis提供了一种新的开发方式“Mapper接口”，
+    这个配置用于扫描com.sirifeng包下所有有效的Mapper接口类-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.sirifeng"/>
+    </bean>
+
+    <!-- 事务管理器transactionManager提供了声明式事务的支持,在程序成功提交,运行时异常回滚 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!-- 开启注解形式的声明式事务 -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+</beans>

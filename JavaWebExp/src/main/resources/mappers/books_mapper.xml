@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace指向接口-->
+<mapper namespace="com.sirifeng.chapter5.mapper.BooksMapper">
+    <!--
+    id与方法名保持一致
+    parameterType与参数类型保持一致
+    resultType与方法返回值保持一致
+ -->
+
+</mapper>

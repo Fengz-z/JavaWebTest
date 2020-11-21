@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+ 在学习过程中遇到任何问题可以加我的QQ群722570599(老齐的IT指导群)
+ 在这里老齐将给你直接提供帮助与解答，只为你可以学的更轻松。
+ 同时你也可以访问老齐的官网: www.itlaoqi.com , 这里课程更优惠
+ -->
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <!--驼峰命名转换-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+    <!--开启Mybatis-Plus分页功能-->
+    <plugins>
+        <plugin interceptor="com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor">
+        </plugin>
+    </plugins>
+</configuration>
