@@ -1,0 +1,4 @@
+com\sirifeng\chapter5\entity\Book.class
+com\sirifeng\chapter5\controller\HelloController.class
+com\sirifeng\chapter5\services\BooksService.class
+com\sirifeng\chapter5\mapper\BooksMapper.class
